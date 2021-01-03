@@ -31,31 +31,31 @@ ipmode="-4"
 # Explain briefly how the script works
 display_help()
 {
-   echo
+	echo
 	echo "  Usage: ipshow.sh [OPTION]"
 	echo
-   echo "  This script makes the outputs of \"ip link\", \"ip address\" and \"ip route\""
-   echo "  more compact and easy to read."
+	echo "  This script makes the outputs of \"ip link\", \"ip address\" and \"ip route\""
+	echo "  more compact and easy to read."
 	echo
-   echo "  OPTIONS"
-   echo "     -6, --ipv6    By default, only IPv4 information is displayed in the"
+	echo "  OPTIONS"
+	echo "     -6, --ipv6    By default, only IPv4 information is displayed in the"
 	echo "                   script's \"ip address\" and \"ip route\" outputs. With this"
 	echo "                   option, IPv6 information is displayed instead."
-   echo "     -h, --help    To display this message again."
-   echo
-   exit 0
+	echo "     -h, --help    To display this message again."
+	echo
+	exit 0
 }
 
 # Check if a parameter has been provided
 if [ $# != 0 ]
-   then
-      case $1 in
-         -h) display_help ;;
-         --help) display_help ;;
-         -6) ipmode="-6" ;;
-         --ipv6) ipmode="-6" ;;
-      esac
-   fi
+	then
+		case $1 in
+			-h) display_help ;;
+			--help) display_help ;;
+			-6) ipmode="-6" ;;
+			--ipv6) ipmode="-6" ;;
+		esac
+	fi
 
 # Display interfaces
 echo
