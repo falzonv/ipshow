@@ -18,7 +18,7 @@ wget "https://github.com/falzonv/ipshow/archive/main.zip"
 unzip main.zip
 ```
 
-***Note :*** *if you are familiar with Git, you may prefer to use `git clone "https://github.com/falzonv/ipshow" ipshow-main`*
+***Note :*** *if you are familiar with Git, you may prefer to use `git clone "https://github.com/falzonv/ipshow" ipshow-main` so you can easily get updates with `git pull`*
 
 Copy the script in the `bin` folder of your home directory :
 
