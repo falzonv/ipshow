@@ -28,6 +28,10 @@ route_connected_titles="Connected_Subnet Interface"
 route_connected_fields='$1,              $3'
 ipmode="-4"
 
+# Colors definition (1 = Sections, 2 = Columns titles)
+color1="\e[1;33m" # Yellow
+color2="\e[1;34m" # Blue
+
 # Explain briefly how the script works
 display_help()
 {
@@ -60,19 +64,19 @@ if [ $# != 0 ]
 echo
 
 # Display IP addressing
-echo "--- \"ip address\" information ---"
-(echo $address_titles ; ip -brief $ipmode address | sort) | column -t
+echo -e "${color1}--- \"ip address\" information ---\e[0m"
+(echo -e ${color2}$address_titles"\e[0m" ; ip -brief $ipmode address | sort) | column -t
 echo
 
 # Display IP routing
-echo "--- \"ip route\" information ---"
-ip $ipmode route | grep "via" | (echo $route_via_titles ; awk "{print $route_via_fields}") | column -t
+echo -e "${color1}--- \"ip route\" information ---\e[0m"
+ip $ipmode route | grep "via" | (echo -e ${color2}$route_via_titles"\e[0m" ; awk "{print $route_via_fields}") | column -t
 echo
-ip $ipmode route | grep -v "via" | (echo $route_connected_titles ; awk "{print $route_connected_fields}") | column -t
+ip $ipmode route | grep -v "via" | (echo -e ${color2}$route_connected_titles"\e[0m" ; awk "{print $route_connected_fields}") | column -t
 echo
 
 # Display interfaces
-echo "--- \"ip link\" information ---"
-(echo $link_titles ; ip -brief link | sort) | column -t
+echo -e "${color1}--- \"ip link\" information ---\e[0m"
+(echo -e ${color2}$link_titles"\e[0m" ; ip -brief link | sort) | column -t
 echo
 
