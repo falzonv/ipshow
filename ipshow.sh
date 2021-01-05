@@ -34,7 +34,7 @@ display_help()
 	echo
 	echo "  Usage: ipshow.sh [OPTION]"
 	echo
-	echo "  This script makes the outputs of \"ip link\", \"ip address\" and \"ip route\""
+	echo "  This script makes the outputs of \"ip address\", \"ip route\" and \"ip link\""
 	echo "  more compact and easy to read."
 	echo
 	echo "  OPTIONS"
@@ -57,10 +57,6 @@ if [ $# != 0 ]
 		esac
 	fi
 
-# Display interfaces
-echo
-echo "--- \"ip link\" information ---"
-(echo $link_titles ; ip -brief link | sort) | column -t
 echo
 
 # Display IP addressing
@@ -73,5 +69,10 @@ echo "--- \"ip route\" information ---"
 ip $ipmode route | grep "via" | (echo $route_via_titles ; awk "{print $route_via_fields}") | column -t
 echo
 ip $ipmode route | grep -v "via" | (echo $route_connected_titles ; awk "{print $route_connected_fields}") | column -t
+echo
+
+# Display interfaces
+echo "--- \"ip link\" information ---"
+(echo $link_titles ; ip -brief link | sort) | column -t
 echo
 
